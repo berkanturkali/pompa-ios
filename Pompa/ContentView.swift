@@ -11,25 +11,28 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Pompa")
-                        .font(.largeTitle.bold())
+                        .font(PompaTypography.font(size: 34, weight: .bold))
                         .foregroundStyle(PompaColors.Text.primary)
 
                     Text("The iOS theme now matches your Android palette.")
+                        .font(PompaTypography.font(size: 16))
                         .foregroundStyle(PompaColors.Text.secondary)
                 }
 
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Featured Card")
-                        .font(.headline)
+                        .font(PompaTypography.font(size: 20, weight: .semibold))
                         .foregroundStyle(PompaColors.Text.primary)
 
                     Text("Primary surfaces, borders, text, and CTA colors are mapped into SwiftUI so you can reuse them across screens.")
+                        .font(PompaTypography.font(size: 15))
                         .foregroundStyle(PompaColors.Text.secondary)
                         .fixedSize(horizontal: false, vertical: true)
 
                     Button("Continue") {
                     }
                     .buttonStyle(.borderedProminent)
+                    
                     .tint(PompaColors.Button.filledPrimaryBackground)
                     .foregroundStyle(PompaColors.Button.filledPrimaryContent)
                 }
@@ -56,7 +59,7 @@ struct ContentView: View {
 
     private func chip(title: String, selected: Bool) -> some View {
         Text(title)
-            .font(.subheadline.weight(.semibold))
+            .font(PompaTypography.font(size: 14, weight: .semibold))
             .foregroundStyle(selected ? PompaColors.Chip.selectedText : PompaColors.Chip.unselectedText)
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
