@@ -18,6 +18,38 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>PompaConfig</key>
+	<dict>
+		<key>EMULATOR_IMAGE_BASE_URL</key>
+		<string>http://127.0.0.1:5001/</string>
+		<key>IMAGE_BASE_URL</key>
+		<string>http://192.168.1.105:5001/</string>
+		<key>POMPA_LOCAL_BASE_URL</key>
+		<string>http://192.168.1.105:5001/api/v1/</string>
+		<key>POMPA_LOCAL_EMULATOR_BASE_URL</key>
+		<string>http://127.0.0.1:5001/api/v1/</string>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>montserrat_black.ttf</string>
+		<string>montserrat_black_italic.ttf</string>
+		<string>montserrat_bold.ttf</string>
+		<string>montserrat_bold_italic.ttf</string>
+		<string>montserrat_extrabold.ttf</string>
+		<string>montserrat_extrabold_italic.ttf</string>
+		<string>montserrat_extralight.ttf</string>
+		<string>montserrat_extralight_italic.ttf</string>
+		<string>montserrat_italic.ttf</string>
+		<string>montserrat_light.ttf</string>
+		<string>montserrat_light_italic.ttf</string>
+		<string>montserrat_medium.ttf</string>
+		<string>montserrat_medium_italic.ttf</string>
+		<string>montserrat_regular.ttf</string>
+		<string>montserrat_semibold.ttf</string>
+		<string>montserrat_semibold_italic.ttf</string>
+		<string>montserrat_thin.ttf</string>
+		<string>montserrat_thin_italic.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -39,27 +71,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>montserrat_black.ttf</string>
-		<string>montserrat_black_italic.ttf</string>
-		<string>montserrat_bold.ttf</string>
-		<string>montserrat_bold_italic.ttf</string>
-		<string>montserrat_extrabold.ttf</string>
-		<string>montserrat_extrabold_italic.ttf</string>
-		<string>montserrat_extralight.ttf</string>
-		<string>montserrat_extralight_italic.ttf</string>
-		<string>montserrat_italic.ttf</string>
-		<string>montserrat_light.ttf</string>
-		<string>montserrat_light_italic.ttf</string>
-		<string>montserrat_medium.ttf</string>
-		<string>montserrat_medium_italic.ttf</string>
-		<string>montserrat_regular.ttf</string>
-		<string>montserrat_semibold.ttf</string>
-		<string>montserrat_semibold_italic.ttf</string>
-		<string>montserrat_thin.ttf</string>
-		<string>montserrat_thin_italic.ttf</string>
 	</array>
 </dict>
 </plist>
