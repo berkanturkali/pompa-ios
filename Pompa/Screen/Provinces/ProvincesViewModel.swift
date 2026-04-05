@@ -10,8 +10,11 @@ class ProvincesViewModel: ObservableObject {
     @Published private(set) var errorMessage: String?
 
     private let provinceService: ProvinceService = ProvinceService.shared
+    private let pompaUserPrefs: PompaUserPrefs = .shared
     
     init() {
+        selectedProvinceCode = pompaUserPrefs.userPreferences.selectedCity.0
+
         Task {
             await fetchProvinces()
         }
@@ -55,5 +58,9 @@ class ProvincesViewModel: ObservableObject {
 
     func selectProvince(_ province: Province) {
         selectedProvinceCode = province.code
+
+        Task {
+            await pompaUserPrefs.setSelectedCity(cityCode: province.code, cityName: province.name)
+        }
     }
 }

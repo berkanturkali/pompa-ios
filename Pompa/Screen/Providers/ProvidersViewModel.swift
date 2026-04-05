@@ -10,6 +10,11 @@ final class ProvidersViewModel: ObservableObject {
     @Published var selectedProviderID: Int?
 
     private let providerService: ProviderService = ProviderService.shared
+    private let pompaUserPrefs: PompaUserPrefs = .shared
+
+    init() {
+        selectedProviderID = pompaUserPrefs.getSelectedProviderID()
+    }
 
     var selectedProvider: Provider? {
         guard let selectedProviderID else { return nil }
@@ -54,6 +59,18 @@ final class ProvidersViewModel: ObservableObject {
 
     func selectProvider(_ provider: Provider?) {
         selectedProviderID = provider?.id
+    }
+
+    func saveSelectedProvider() {
+        guard let selectedProvider else { return }
+
+        Task {
+            await pompaUserPrefs.setSelectedProvider(
+                providerID: selectedProvider.id,
+                providerName: selectedProvider.name,
+                providerLogo: selectedProvider.logo
+            )
+        }
     }
 
     func clearError() {

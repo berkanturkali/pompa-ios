@@ -96,7 +96,10 @@ struct ProvidersScreen: View {
                 .fill(PompaColors.border)
                 .frame(height: 1)
 
-            Button(action: onConfirmButtonClick) {
+            Button(action: {
+                viewModel.saveSelectedProvider()
+                onConfirmButtonClick()
+            }) {
                 Text(LocalizedStrings.confirm)
                     .font(PompaTypography.font(size: 16, weight: .semibold))
                     .frame(maxWidth: .infinity)
