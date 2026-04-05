@@ -30,6 +30,14 @@ struct LocalizedStrings {
     static var retry: String {
         return localizedString(for: "retry")
     }
+
+    static var confirm: String {
+        return localizedString(for: "confirm")
+    }
+
+    static var providersSelectTitle: String {
+        return localizedString(for: "providers_select_title")
+    }
     
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")

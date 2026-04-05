@@ -20,10 +20,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>PompaConfig</key>
 	<dict>
-		<key>EMULATOR_IMAGE_BASE_URL</key>
-		<string>http://127.0.0.1:5001/</string>
 		<key>IMAGE_BASE_URL</key>
-		<string>http://192.168.1.105:5001/</string>
+		<string>http://localhost:5001/</string>
 		<key>POMPA_LOCAL_BASE_URL</key>
 		<string>http://192.168.1.105:5001/api/v1/</string>
 		<key>POMPA_LOCAL_EMULATOR_BASE_URL</key>

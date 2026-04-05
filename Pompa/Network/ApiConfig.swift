@@ -20,11 +20,7 @@ struct ApiConfig {
     }()
 
     static let imageBaseURL: URL = {
-        #if targetEnvironment(simulator)
-        return value(for: "EMULATOR_IMAGE_BASE_URL")
-        #else
-        return value(for: "IMAGE_BASE_URL")
-        #endif
+        return value(for: "IMAGE_BASE_URL")       
     }()
 
     static func url(_ path: String) -> String {
