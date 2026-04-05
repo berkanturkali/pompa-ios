@@ -77,6 +77,13 @@ final class PompaUserPrefs: ObservableObject {
         defaults.object(forKey: Keys.favoriteFuelProviderID) as? Int
     }
 
+    func hasSelectedProvinceAndFavoriteProvider() -> Bool {
+        let cityCode = defaults.string(forKey: Keys.selectedCityCode)
+        let providerName = defaults.string(forKey: Keys.favoriteFuelProviderName)
+
+        return !(cityCode?.isEmpty ?? true) && !(providerName?.isEmpty ?? true)
+    }
+
     private func refreshState() {
         userPreferences = PompaUserPreferencesState(
             selectedCity: (
