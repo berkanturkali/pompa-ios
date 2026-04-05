@@ -17,7 +17,7 @@ struct ProvidersScreen: View {
     var body: some View {
         ZStack {
             PompaColors.Background.primary
-                .ignoresSafeArea() 
+                .ignoresSafeArea()
 
             VStack(spacing: 0) {
                 PompaAppTopBar(
@@ -64,6 +64,9 @@ struct ProvidersScreen: View {
                 .transition(.opacity.combined(with: .scale))
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .navigationBar)
         .alert(
             LocalizedStrings.somethingWentWrong,
             isPresented: Binding(
