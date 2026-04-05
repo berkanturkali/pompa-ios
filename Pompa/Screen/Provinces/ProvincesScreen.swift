@@ -15,7 +15,7 @@ struct ProvincesScreen: View {
                 VStack(spacing: 0) {
                     PompaAppTopBar(
                         showBackButton: false,
-                        showSelectedProvince: viewModel.selectedProvince != nil,
+                        showSelectedProvince: false,
                         title: LocalizedStrings.provincesSelectTitle,
                         provinceName: viewModel.selectedProvince?.name ?? "",
                         provinceCode: viewModel.selectedProvince?.code ?? "",
@@ -70,7 +70,6 @@ struct ProvincesScreen: View {
             .navigationDestination(for: Province.self) { province in
                 ProvidersScreen(
                     showBackButton: true,
-                    showSelectedProvince: true,
                     title: LocalizedStrings.providersSelectTitle,
                     provinceName: province.name,
                     provinceCode: province.code,

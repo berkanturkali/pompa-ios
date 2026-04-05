@@ -52,8 +52,8 @@ final class ProvidersViewModel: ObservableObject {
         isLoading = false
     }
 
-    func selectProvider(_ provider: Provider) {
-        selectedProviderID = provider.id
+    func selectProvider(_ provider: Provider?) {
+        selectedProviderID = provider?.id
     }
 
     func clearError() {

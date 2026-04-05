@@ -6,7 +6,6 @@ struct ProvidersScreen: View {
     @StateObject private var viewModel = ProvidersViewModel()
 
     let showBackButton: Bool
-    let showSelectedProvince: Bool
     let title: String
     let provinceName: String
     let provinceCode: String
@@ -22,7 +21,7 @@ struct ProvidersScreen: View {
             VStack(spacing: 0) {
                 PompaAppTopBar(
                     showBackButton: showBackButton,
-                    showSelectedProvince: showSelectedProvince,
+                    showSelectedProvince: false,
                     title: title,
                     provinceName: provinceName,
                     provinceCode: provinceCode,
@@ -37,7 +36,8 @@ struct ProvidersScreen: View {
                                 provider: provider,
                                 isSelected: provider == viewModel.selectedProvider
                             ) {
-                                viewModel.selectProvider(provider)
+                                let selectedProvider = provider == viewModel.selectedProvider ? nil : provider
+                                viewModel.selectProvider(selectedProvider)
                             }
                         }
                     }
@@ -125,7 +125,6 @@ struct ProvidersScreen: View {
 #Preview {
     ProvidersScreen(
         showBackButton: true,
-        showSelectedProvince: true,
         title: LocalizedStrings.providersSelectTitle,
         provinceName: "İstanbul",
         provinceCode: "34",
