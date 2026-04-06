@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C07EA6777986435392172907 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2056ABE05EB447D4B783137C /* SDWebImageSwiftUI */; };
+		9B34FAE093F141188462490A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B423299BB0FD456A8FAEABBD /* SDWebImage */; };
+		BAE75BF67D4C4EF296B6C53B /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 931EF63D16D645A5BF61318D /* SDWebImageSVGCoder */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EBAB09112F6C7DE90046C4FD /* Pompa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pompa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAB091F2F6C7DEB0046C4FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -24,6 +30,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B34FAE093F141188462490A /* SDWebImage in Frameworks */,
+				BAE75BF67D4C4EF296B6C53B /* SDWebImageSVGCoder in Frameworks */,
+				C07EA6777986435392172907 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +76,9 @@
 			);
 			name = Pompa;
 			packageProductDependencies = (
+				B423299BB0FD456A8FAEABBD /* SDWebImage */,
+				931EF63D16D645A5BF61318D /* SDWebImageSVGCoder */,
+				2056ABE05EB447D4B783137C /* SDWebImageSwiftUI */,
 			);
 			productName = Pompa;
 			productReference = EBAB09112F6C7DE90046C4FD /* Pompa.app */;
@@ -97,6 +109,11 @@
 			);
 			mainGroup = EBAB09082F6C7DE90046C4FD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0019EE8671F04F7AB687D8D3 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				9C4C6AE3335B44D6B7A98EC2 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
+				054AE1E773014545AB628C55 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EBAB09122F6C7DE90046C4FD /* Products */;
 			projectDirPath = "";
@@ -325,6 +342,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0019EE8671F04F7AB687D8D3 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		9C4C6AE3335B44D6B7A98EC2 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		054AE1E773014545AB628C55 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B423299BB0FD456A8FAEABBD /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0019EE8671F04F7AB687D8D3 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		931EF63D16D645A5BF61318D /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C4C6AE3335B44D6B7A98EC2 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
+		};
+		2056ABE05EB447D4B783137C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 054AE1E773014545AB628C55 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EBAB09092F6C7DE90046C4FD /* Project object */;
 }

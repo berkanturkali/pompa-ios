@@ -1,5 +1,5 @@
+import SDWebImageSwiftUI
 import SwiftUI
-import WebKit
 
 struct ProviderItem: View {
     let provider: Provider
@@ -55,24 +55,15 @@ struct ProviderLogoView: View {
                 )
 
             if let logoURL {
-                if logoURL.pathExtension.lowercased() == "svg" {
-                    RemoteSVGImage(url: logoURL)
-                        .frame(width: 28, height: 28)
-                        .clipShape(Circle())
-                } else {
-                    AsyncImage(url: logoURL) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                                .clipShape(Circle())
-                        default:
-                            fallbackIcon
-                        }
-                    }
+                WebImage(url: logoURL) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    fallbackIcon
                 }
+                .scaledToFit()
+                .frame(width: 28, height: 28)
+                .clipShape(Circle())
             } else {
                 fallbackIcon
             }
@@ -111,53 +102,6 @@ struct ProviderLogoView: View {
         Image(systemName: "drop.fill")
             .font(.system(size: 18, weight: .medium))
             .foregroundStyle(PompaColors.Text.primary)
-    }
-}
-
-private struct RemoteSVGImage: UIViewRepresentable {
-    let url: URL
-
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView(frame: .zero)
-        webView.isOpaque = false
-        webView.backgroundColor = .clear
-        webView.scrollView.isScrollEnabled = false
-        webView.scrollView.backgroundColor = .clear
-        webView.isUserInteractionEnabled = false
-        webView.layer.cornerRadius = 17
-        webView.layer.masksToBounds = true
-        return webView
-    }
-
-    func updateUIView(_ webView: WKWebView, context: Context) {
-        let html = """
-        <html>
-        <head>
-        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            overflow: hidden;
-        }
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-        }
-        </style>
-        </head>
-        <body>
-            <img src="\(url.absoluteString)" />
-        </body>
-        </html>
-        """
-
-        webView.loadHTMLString(html, baseURL: url.deletingLastPathComponent())
     }
 }
 
