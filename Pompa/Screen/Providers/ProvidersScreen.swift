@@ -4,13 +4,6 @@ import SwiftUI
 
 struct ProvidersScreen: View {
     @StateObject private var viewModel = ProvidersViewModel()
-
-    let showBackButton: Bool
-    let title: String
-    let provinceName: String
-    let provinceCode: String
-    let onBackButtonClick: () -> Void
-    let onSelectedProvinceClick: () -> Void
     let onConfirmButtonClick: () -> Void
 
     var body: some View {
@@ -18,36 +11,24 @@ struct ProvidersScreen: View {
             PompaColors.Background.primary
                 .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                PompaAppTopBar(
-                    showBackButton: showBackButton,
-                    showSelectedProvince: false,
-                    title: title,
-                    provinceName: provinceName,
-                    provinceCode: provinceCode,
-                    onBackButtonClick: onBackButtonClick,
-                    onSelectedProvinceClick: onSelectedProvinceClick
-                )
-
-                ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(viewModel.providers) { provider in
-                            ProviderItem(
-                                provider: provider,
-                                isSelected: provider == viewModel.selectedProvider
-                            ) {
-                                let selectedProvider = provider == viewModel.selectedProvider ? nil : provider
-                                viewModel.selectProvider(selectedProvider)
-                            }
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(viewModel.providers) { provider in
+                        ProviderItem(
+                            provider: provider,
+                            isSelected: provider == viewModel.selectedProvider
+                        ) {
+                            let selectedProvider = provider == viewModel.selectedProvider ? nil : provider
+                            viewModel.selectProvider(selectedProvider)
                         }
                     }
-                    .padding(.horizontal, 8)
-                    .padding(.top, 16)
-                    .padding(.bottom, 16)
                 }
-                .safeAreaInset(edge: .bottom) {
-                    confirmSection
-                }
+                .padding(.horizontal, 8)
+                .padding(.top, 16)
+                .padding(.bottom, 16)
+            }
+            .safeAreaInset(edge: .bottom) {
+                confirmSection
             }
 
             if viewModel.isLoading {
@@ -65,8 +46,6 @@ struct ProvidersScreen: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .navigationBarBackButtonHidden(true)
-        .toolbar(.hidden, for: .navigationBar)
         .alert(
             LocalizedStrings.somethingWentWrong,
             isPresented: Binding(
@@ -126,13 +105,5 @@ struct ProvidersScreen: View {
 }
 
 #Preview {
-    ProvidersScreen(
-        showBackButton: true,
-        title: LocalizedStrings.providersSelectTitle,
-        provinceName: "İstanbul",
-        provinceCode: "34",
-        onBackButtonClick: {},
-        onSelectedProvinceClick: {},
-        onConfirmButtonClick: {}
-    )
+    ProvidersScreen(onConfirmButtonClick: {})
 }

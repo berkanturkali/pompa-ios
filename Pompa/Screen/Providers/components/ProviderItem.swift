@@ -42,7 +42,7 @@ struct ProviderItem: View {
     }
 }
 
-private struct ProviderLogoView: View {
+struct ProviderLogoView: View {
     let logoPath: String?
 
     var body: some View {

@@ -38,6 +38,26 @@ struct LocalizedStrings {
     static var providersSelectTitle: String {
         return localizedString(for: "providers_select_title")
     }
+
+    static var homeTitle: String {
+        return localizedString(for: "home_title")
+    }
+
+    static var settingsTitle: String {
+        return localizedString(for: "settings_title")
+    }
+
+    static var average: String {
+        return localizedString(for: "average")
+    }
+
+    static var pricesMayVaryForThisStation: String {
+        return localizedString(for: "prices_may_vary_for_this_station")
+    }
+    
+    static var appName: String {
+        return "Pompa"
+    }
     
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
