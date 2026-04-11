@@ -70,6 +70,10 @@ struct LocalizedStrings {
     static var fuelFilterLPG: String {
         return localizedString(for: "fuel_filter_lpg")
     }
+
+    static var fuelSearchBarHint: String {
+        return localizedString(for: "fuel_search_bar_hint")
+    }
     
     static var appName: String {
         return "Pompa"
