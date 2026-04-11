@@ -54,6 +54,22 @@ struct LocalizedStrings {
     static var pricesMayVaryForThisStation: String {
         return localizedString(for: "prices_may_vary_for_this_station")
     }
+
+    static var fuelFilterAll: String {
+        return localizedString(for: "fuel_filter_all")
+    }
+
+    static var fuelFilterGasoline: String {
+        return localizedString(for: "fuel_filter_gasoline")
+    }
+
+    static var fuelFilterDiesel: String {
+        return localizedString(for: "fuel_filter_diesel")
+    }
+
+    static var fuelFilterLPG: String {
+        return localizedString(for: "fuel_filter_lpg")
+    }
     
     static var appName: String {
         return "Pompa"

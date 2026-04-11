@@ -9,6 +9,19 @@ struct FuelPriceProvider: Codable {
     let source: PriceSource?
     let data: [FuelPriceRecord?]
     let error: String?
+
+    func copy(data: [FuelPriceRecord?]) -> FuelPriceProvider {
+        FuelPriceProvider(
+            provider: provider,
+            providerLogo: providerLogo,
+            providerIsManual: providerIsManual,
+            averagePrice: averagePrice,
+            ok: ok,
+            source: source,
+            data: data,
+            error: error
+        )
+    }
 }
 
 enum PriceSource: String, Codable {
