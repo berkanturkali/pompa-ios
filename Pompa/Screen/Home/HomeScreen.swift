@@ -29,7 +29,7 @@ struct HomeScreen: View {
                     .padding(.trailing, 8)
 
                 ScrollView {
-                    if filteredProviders.isEmpty {
+                    if filteredProviders.isEmpty && !viewModel.isLoading {
                         Text(LocalizedStrings.noResultFound)
                             .font(PompaTypography.font(size: 13, weight: .medium))
                             .foregroundStyle(PompaColors.Text.secondary)
@@ -57,6 +57,10 @@ struct HomeScreen: View {
                 }
             }
             .padding(8)
+
+            if viewModel.isLoading {
+                PompaLoadingView()
+            }
         }
         .onPreferenceChange(ProviderHeaderOffsetPreferenceKey.self) { headerOffsets = $0 }
     }
