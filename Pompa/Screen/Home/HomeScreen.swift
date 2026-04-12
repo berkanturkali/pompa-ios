@@ -179,21 +179,30 @@ private extension HomeScreen {
     @ViewBuilder
     func providerContent(_ provider: FuelPriceProvider) -> some View {
         let stations = provider.data.compactMap { $0 }
+        let visibleRecords = stations.compactMap { station -> (FuelPriceRecord, [FuelPriceUiModel])? in
+            let fuelPrices = station.prices?.mapToUiItems(
+                unit: station.unit ?? "tl/lt",
+                weightUnit: station.weightUnit ?? "tl/kg"
+            ) ?? []
+
+            guard !fuelPrices.isEmpty else {
+                return nil
+            }
+
+            return (station, fuelPrices)
+        }
 
         if let error = provider.error, !error.isEmpty {
             ProviderErrorView(provider: provider.provider)
                 .padding(.bottom, 8)
-        } else if stations.isEmpty {
+        } else if visibleRecords.isEmpty {
             ProviderEmptyView(provider: provider.provider)
                 .padding(.bottom, 8)
         } else {
             VStack(spacing: 8) {
-                ForEach(stations.indices, id: \.self) { index in
-                    let station = stations[index]
-                    let allFuelPrices = station.prices?.mapToUiItems(
-                        unit: station.unit ?? "tl/lt",
-                        weightUnit: station.weightUnit ?? "tl/kg"
-                    ) ?? []
+                ForEach(Array(visibleRecords.enumerated()), id: \.offset) { _, element in
+                    let station = element.0
+                    let allFuelPrices = element.1
                     let visibleFuelPrices = Array(allFuelPrices.prefix(3))
 
                     FuelItem(
