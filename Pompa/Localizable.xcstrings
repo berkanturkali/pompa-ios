@@ -73,6 +73,23 @@
         }
       }
     },
+    "could_not_find_any_result_for_this_provider" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not find any result for %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ için herhangi bir sonuç bulunamadı."
+          }
+        }
+      }
+    },
     "fuel_filter_all" : {
       "extractionState" : "manual",
       "localizations" : {

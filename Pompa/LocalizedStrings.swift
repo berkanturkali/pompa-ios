@@ -78,6 +78,10 @@ struct LocalizedStrings {
     static func providerFetchError(_ provider: String) -> String {
         return localizedString(for: "something_went_wrong_while_fetching_prices_for_this_provider", provider)
     }
+
+    static func providerEmptyResult(_ provider: String) -> String {
+        return localizedString(for: "could_not_find_any_result_for_this_provider", provider)
+    }
     
     static var appName: String {
         return "Pompa"
