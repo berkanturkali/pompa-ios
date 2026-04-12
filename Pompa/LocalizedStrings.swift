@@ -74,6 +74,10 @@ struct LocalizedStrings {
     static var fuelSearchBarHint: String {
         return localizedString(for: "fuel_search_bar_hint")
     }
+
+    static func providerFetchError(_ provider: String) -> String {
+        return localizedString(for: "something_went_wrong_while_fetching_prices_for_this_provider", provider)
+    }
     
     static var appName: String {
         return "Pompa"
@@ -81,5 +85,10 @@ struct LocalizedStrings {
     
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
+    }
+
+    static func localizedString(for key: String, _ arguments: CVarArg...) -> String {
+        let format = NSLocalizedString(key, comment: "")
+        return String(format: format, locale: Locale.current, arguments: arguments)
     }
 }

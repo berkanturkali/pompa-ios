@@ -238,6 +238,23 @@
         }
       }
     },
+    "something_went_wrong_while_fetching_prices_for_this_provider" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong while fetching prices for %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ için fiyatlar alınırken bir sorun oluştu."
+          }
+        }
+      }
+    },
     "provinces_select_title" : {
       "extractionState" : "manual",
       "localizations" : {
