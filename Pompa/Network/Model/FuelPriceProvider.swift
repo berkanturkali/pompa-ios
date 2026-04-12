@@ -40,6 +40,58 @@ struct FuelPriceRecord: Codable {
     let source: String?
     let fetchedAt: String?
     let priceTrends: [PriceTrend]?
+
+    private enum CodingKeys: String, CodingKey {
+        case brand
+        case cityCode
+        case cityName
+        case districtName
+        case prices
+        case unit
+        case weightUnit
+        case source
+        case fetchedAt
+        case priceTrends
+    }
+
+    init(
+        brand: String?,
+        cityCode: String?,
+        cityName: String?,
+        districtName: String?,
+        prices: FuelPrices?,
+        unit: String?,
+        weightUnit: String?,
+        source: String?,
+        fetchedAt: String?,
+        priceTrends: [PriceTrend]?
+    ) {
+        self.brand = brand
+        self.cityCode = cityCode
+        self.cityName = cityName
+        self.districtName = districtName
+        self.prices = prices
+        self.unit = unit
+        self.weightUnit = weightUnit
+        self.source = source
+        self.fetchedAt = fetchedAt
+        self.priceTrends = priceTrends
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        brand = try container.decodeIfPresent(String.self, forKey: .brand)
+        cityCode = try container.decodeFlexibleStringIfPresent(forKey: .cityCode)
+        cityName = try container.decodeIfPresent(String.self, forKey: .cityName)
+        districtName = try container.decodeIfPresent(String.self, forKey: .districtName)
+        prices = try container.decodeIfPresent(FuelPrices.self, forKey: .prices)
+        unit = try container.decodeIfPresent(String.self, forKey: .unit)
+        weightUnit = try container.decodeIfPresent(String.self, forKey: .weightUnit)
+        source = try container.decodeIfPresent(String.self, forKey: .source)
+        fetchedAt = try container.decodeIfPresent(String.self, forKey: .fetchedAt)
+        priceTrends = try container.decodeIfPresent([PriceTrend].self, forKey: .priceTrends)
+    }
 }
 
 struct FuelPrices: Codable {
@@ -186,4 +238,26 @@ enum ChangeDirection: String, Codable {
     case down = "DOWN"
     case same = "SAME"
     case noData = "NO_DATA"
+}
+
+private extension KeyedDecodingContainer {
+    func decodeFlexibleStringIfPresent(forKey key: Key) throws -> String? {
+        if let stringValue = try? decodeIfPresent(String.self, forKey: key) {
+            return stringValue
+        }
+
+        if let intValue = try? decodeIfPresent(Int.self, forKey: key) {
+            return String(intValue)
+        }
+
+        if let doubleValue = try? decodeIfPresent(Double.self, forKey: key) {
+            if doubleValue.rounded() == doubleValue {
+                return String(Int(doubleValue))
+            }
+
+            return String(doubleValue)
+        }
+
+        return nil
+    }
 }

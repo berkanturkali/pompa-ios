@@ -64,7 +64,7 @@ private extension ContentView {
                 route = .home
             }
         case .home:
-            Text("Home")
+            HomeScreen()
         case .settings:
             Text(LocalizedStrings.settingsTitle)
         }

@@ -55,7 +55,31 @@ struct NetworkManager {
                 throw NetworkError.unknownError(statusCode: httpResponse.statusCode, description: LocalizedStrings.noResultFound)
             }
             
-            let decodedResponse = try JSONDecoder().decode(responseType, from: data)
+            let decodedResponse: BaseApiResponse<U>
+            do {
+                decodedResponse = try JSONDecoder().decode(responseType, from: data)
+            } catch let decodingError as DecodingError {
+                if let rawResponse = String(data: data, encoding: .utf8) {
+                    print("RAW RESPONSE:")
+                    print(rawResponse)
+                }
+
+                switch decodingError {
+                case .keyNotFound(let key, let context):
+                    print("DECODING ERROR - Missing key:", key.stringValue, context.debugDescription)
+                case .typeMismatch(let type, let context):
+                    print("DECODING ERROR - Type mismatch:", type, context.debugDescription)
+                    print("CODING PATH:", context.codingPath.map(\.stringValue).joined(separator: "."))
+                case .valueNotFound(let type, let context):
+                    print("DECODING ERROR - Value not found:", type, context.debugDescription)
+                case .dataCorrupted(let context):
+                    print("DECODING ERROR - Data corrupted:", context.debugDescription)
+                @unknown default:
+                    print("DECODING ERROR:", decodingError)
+                }
+
+                throw decodingError
+            }
             
             print("decoded response = \(decodedResponse)")
             

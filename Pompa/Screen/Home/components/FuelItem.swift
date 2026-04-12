@@ -86,7 +86,7 @@ struct FuelItem: View {
                             .fill(PompaColors.Card.primaryBackground)
                         
                         Image(systemName: "location")
-                            .font(.system(size: 12, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold))
                             .foregroundStyle(PompaColors.Text.primary)
                     }
                     .frame(width: 20, height: 20)
@@ -151,8 +151,12 @@ private struct FuelPriceRow: View {
                     HStack(spacing: 4) {
                         Image(systemName: priceTrend.icon)
                             .font(.system(size: 10, weight: .bold))
-                        Text(priceTrend.value)
-                            .font(PompaTypography.font(size: 10, weight: .medium))
+                        HStack(spacing: 2) {
+                            Text(priceTrend.value)
+                                .font(PompaTypography.font(size: 10, weight: .medium))
+                            Text("₺")
+                                .font(PompaTypography.font(size: 10, weight: .medium))
+                        }
                     }
                     .foregroundStyle(priceTrend.color)
                 }

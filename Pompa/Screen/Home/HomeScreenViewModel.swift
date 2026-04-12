@@ -90,6 +90,24 @@ final class HomeScreenViewModel: ObservableObject {
             await pompaFilterPrefs.setSelectedFuelType(type)
         }
     }
+
+    func toggleSortDirection() {
+        let nextSortDirection = sortDirection == 0 ? 1 : 0
+
+        Task {
+            await pompaFilterPrefs.setSortDirection(nextSortDirection)
+        }
+    }
+
+    func refresh() {
+        fetchPrices(
+            cityCode: cityCode,
+            cityName: cityName,
+            provider: favProviderName,
+            sortDirection: sortDirection,
+            fuelType: fuelType
+        )
+    }
     
     func getSelectedProvider() -> String? {
         pompaUserPrefs.userPreferences.favoriteProvider.1

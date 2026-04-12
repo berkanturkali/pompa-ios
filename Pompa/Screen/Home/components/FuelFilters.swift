@@ -6,31 +6,22 @@ struct FuelFilters: View {
     let onFilterSelected: (FuelFilterItem) -> Void
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView(.horizontal, showsIndicators: false) {
-                let itemCount = max(filterList.count, 1)
-                let totalSpacing = CGFloat(max(filterList.count - 1, 0)) * 8
-                let itemWidth = max((geometry.size.width - totalSpacing) / CGFloat(itemCount), 0)
-                
-                HStack(alignment: .center, spacing: 12) {
-                    ForEach(filterList) { filterItem in
-                        FuelFilterChip(
-                            selected: selectedFilter == filterItem,
-                            filter: filterItem.value,
-                            icon: filterItem.icon
-                        ) {
-                            if selectedFilter != filterItem {
-                                onFilterSelected(filterItem)
-                            }
-                        }
-                        .frame(width: itemWidth)
+        HStack(alignment: .center, spacing: 12) {
+            ForEach(filterList) { filterItem in
+                FuelFilterChip(
+                    selected: selectedFilter == filterItem,
+                    filter: filterItem.value,
+                    icon: filterItem.icon
+                ) {
+                    if selectedFilter != filterItem {
+                        onFilterSelected(filterItem)
                     }
                 }
-                .frame(width: geometry.size.width, alignment: .center)
-                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
             }
-            .scrollBounceBehavior(.basedOnSize)
         }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
     }
 }
 
@@ -52,6 +43,7 @@ private struct FuelFilterChip: View {
                     .minimumScaleFactor(0.85)
             }
             .foregroundStyle(selected ? PompaColors.Chip.selectedText : PompaColors.Chip.unselectedText)
+            .frame(maxWidth: .infinity)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
             .background(selected ? PompaColors.Chip.selectedBackground : PompaColors.Chip.unselectedBackground)

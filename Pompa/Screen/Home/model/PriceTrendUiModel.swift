@@ -23,9 +23,7 @@ struct PriceTrendUiModel {
             icon = "arrow.down"
             color = .green
         case .same:
-            value = "0.00"
-            icon = "minus"
-            color = PompaColors.Text.secondary
+            return nil
         case .noData:
             return nil
         }
