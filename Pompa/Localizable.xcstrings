@@ -314,6 +314,23 @@
         }
       }
     },
+    "highest_price" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highest price"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En yüksek fiyat"
+          }
+        }
+      }
+    },
     "kerosene" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -327,6 +344,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gaz Yağı"
+          }
+        }
+      }
+    },
+    "lowest_price" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lowest price"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En düşük fiyat"
           }
         }
       }
@@ -450,6 +484,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ayarlar"
+          }
+        }
+      }
+    },
+    "sort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sırala"
           }
         }
       }

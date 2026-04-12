@@ -47,6 +47,18 @@ struct LocalizedStrings {
         return localizedString(for: "settings_title")
     }
 
+    static var sort: String {
+        return localizedString(for: "sort")
+    }
+
+    static var lowestPrice: String {
+        return localizedString(for: "lowest_price")
+    }
+
+    static var highestPrice: String {
+        return localizedString(for: "highest_price")
+    }
+
     static var average: String {
         return localizedString(for: "average")
     }

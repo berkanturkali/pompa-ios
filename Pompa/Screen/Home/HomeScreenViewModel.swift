@@ -99,6 +99,12 @@ final class HomeScreenViewModel: ObservableObject {
         }
     }
 
+    func setSortDirection(_ direction: SortDirection) {
+        Task {
+            await pompaFilterPrefs.setSortDirection(direction.rawValue)
+        }
+    }
+
     func refresh() {
         fetchPrices(
             cityCode: cityCode,

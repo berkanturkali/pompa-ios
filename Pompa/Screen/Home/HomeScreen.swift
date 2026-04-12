@@ -3,6 +3,8 @@ import SwiftUI
 struct HomeScreen: View {
     @StateObject private var viewModel = HomeScreenViewModel()
     @State private var headerOffsets: [String: CGFloat] = [:]
+    @State private var showSortSheet = false
+    @State private var sortSheetHeight: CGFloat = 0
 
     var body: some View {
         ZStack {
@@ -61,8 +63,51 @@ struct HomeScreen: View {
             if viewModel.isLoading {
                 PompaLoadingView()
             }
+
+            ZStack {
+                Color.black
+                    .opacity(showSortSheet ? 0.2 : 0)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation(.spring(response: 0.32, dampingFraction: 0.86)) {
+                            showSortSheet = false
+                        }
+                    }
+
+                VStack {
+                    Spacer()
+
+                    SortScreen(
+                        sortOptions: sortOptions,
+                        onSortOptionClick: { option in
+                            viewModel.setSortDirection(option.direction)
+                            withAnimation(.spring(response: 0.32, dampingFraction: 0.86)) {
+                                showSortSheet = false
+                            }
+                        }
+                    )
+                    .background(
+                        GeometryReader { geometry in
+                            Color.clear
+                                .onAppear {
+                                    sortSheetHeight = geometry.size.height
+                                }
+                                .onChange(of: geometry.size.height) { _, newValue in
+                                    sortSheetHeight = newValue
+                                }
+                        }
+                    )
+                }
+                .padding(.horizontal, 8)
+                .padding(.bottom, 8)
+                .offset(y: showSortSheet ? 0 : sortSheetHeight + 32)
+            }
+            .opacity(showSortSheet ? 1 : 0)
+            .allowsHitTesting(showSortSheet)
+            .zIndex(10)
         }
         .onPreferenceChange(ProviderHeaderOffsetPreferenceKey.self) { headerOffsets = $0 }
+        .animation(.spring(response: 0.32, dampingFraction: 0.86), value: showSortSheet)
     }
 }
 
@@ -73,6 +118,12 @@ private extension HomeScreen {
 
     var selectedProvider: String {
         viewModel.getSelectedProvider() ?? ""
+    }
+
+    var sortOptions: [SortOption] {
+        SortDataSource.getSortOptions(
+            selectedDirection: viewModel.sortDirection == SortDirection.descending.rawValue ? .descending : .ascending
+        )
     }
 
     var currentPinnedHeaderID: String? {
@@ -90,9 +141,10 @@ private extension HomeScreen {
             }
 
             SortButton {
-                viewModel.toggleSortDirection()
+                withAnimation(.spring(response: 0.28, dampingFraction: 0.9)) {
+                    showSortSheet = true
+                }
             }
-            .padding(.leading, 4)
         }
         .padding(.horizontal, 8)
     }
