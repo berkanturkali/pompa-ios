@@ -75,6 +75,42 @@ struct LocalizedStrings {
         return localizedString(for: "fuel_search_bar_hint")
     }
 
+    static func seeAll(_ count: Int) -> String {
+        return localizedString(for: "see_all", count)
+    }
+
+    static var gasoline95: String {
+        return localizedString(for: "gasoline95")
+    }
+
+    static var gasoline95Premium: String {
+        return localizedString(for: "gasoline95_premium")
+    }
+
+    static var dieselPremium: String {
+        return localizedString(for: "diesel_premium")
+    }
+
+    static var kerosene: String {
+        return localizedString(for: "kerosene")
+    }
+
+    static var heatingOil: String {
+        return localizedString(for: "heating_oil")
+    }
+
+    static var fuelOil: String {
+        return localizedString(for: "fuel_oil")
+    }
+
+    static var fuelOilHighSulfur: String {
+        return localizedString(for: "fuel_oil_high_sulfur")
+    }
+
+    static var autogas: String {
+        return localizedString(for: "autogas")
+    }
+
     static func providerFetchError(_ provider: String) -> String {
         return localizedString(for: "something_went_wrong_while_fetching_prices_for_this_provider", provider)
     }
